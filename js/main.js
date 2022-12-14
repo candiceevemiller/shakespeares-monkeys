@@ -2,6 +2,16 @@
 best match. Current generation is displayed but changes quickly, best match will be mostly static and only
 updated when there's a new best match*/
 
+let images = [
+    '176.jpg',
+    'dilbert.gif',
+    'monkeys.jpg',
+    'simpsons.gif',
+    'sonnets.jpeg',
+    'tarantino.jpg',
+    'typewriter.jpg',
+]
+
 // Target text to match is Hamlet's famous soliloquey.
 let target = `To be, or not to be, that is the question:
 Whether 'tis nobler in the mind to suffer
@@ -78,8 +88,17 @@ function typeWriter() {
   }
 }
 
-document.getElementById('target').innerHTML += '<h1>Target Text: </h1>';
-document.getElementById('target').innerHTML += target;
+let img = document.getElementById('img')
+img.src = 'images/' + images[Math.floor(Math.random() * images.length)]
+img.style.width = '500px';
+img.style.height = 'auto';
+img.style.float = 'left';
+img.style.margin = '50px';
+
+let target_element = document.getElementById('target')
+target_element.innerHTML += '<h1>Target Text: </h1>';
+target_element.innerHTML += target;
+
 document.getElementById('demo').innerHTML += '<h1>Generated Text: </h1>';
 document.getElementById('score').innerHTML += '<h1>Score: </h1>';
 
