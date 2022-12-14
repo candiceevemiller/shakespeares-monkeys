@@ -1,3 +1,8 @@
+/* TODO change from typewriter effect and one generated text to continually generating text and keeping a 
+best match. Current generation is displayed but changes quickly, best match will be mostly static and only
+updated when there's a new best match*/
+
+// Target text to match is Hamlet's famous soliloquey.
 let target = `To be, or not to be, that is the question:
 Whether 'tis nobler in the mind to suffer
 The slings and arrows of outrageous fortune,
@@ -32,6 +37,9 @@ And enterprises of great pith and moment
 With this regard their currents turn awry
 And lose the name of action.`;
 
+/* In order to give the "monkeys" a better chance maybe strip punctuation and do all lowercase
+It'll still be vanishingly unlikely for a match at approx 1 in 27^1350 odds but that's down
+from 94^1405*/ 
 const asciiChars = " !\"#$%&'()*+,-./01234556789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
 function generateString(inputLength) {
@@ -47,34 +55,32 @@ function generateString(inputLength) {
 function scoreStrings(generatedStr, targetStr) {
     let matchCount = 0;
     for (let i=0; i < targetStr.length; i++) {
-        if (targetStr[i] === generatedStr[i]) {
+        if (targetStr.charAt(i) === generatedStr.charAt(i)) {
             matchCount += 1;
         }
     }
-
-    return matchCount;
+    console.log(matchCount);
+    console.log(targetStr.length)
+    return String(((matchCount / targetStr.length) * 100).toFixed(2)) + '%';
 }
 
-// TODO fix typewriter animation
 let i = 0;
-let txt = generateString(target); /* The text */
-let speed = 50; /* The speed/duration of the effect in milliseconds */
+let testString = generateString(target.length); /* The text */
+let speed = 1; /* The speed/duration of the effect in milliseconds */
 
 function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("demo").innerHTML += txt.charAt(i);
+  if (i < testString.length) {
+    document.getElementById("demo").innerHTML += testString.charAt(i);
     i++;
     setTimeout(typeWriter, speed);
+  } else {
+    document.getElementById('score').innerHTML += scoreStrings(testString, target);
   }
-  document.getElementById("demo").innerHTML += txt.charAt(i);
 }
 
-// TODO keep best
-for (let i=0; i < 10000; i++) {
-    let testString = generateString(target.length);
-    let score = scoreStrings(testString, target);
-    console.log(score);
-    console.log(testString);
-}
+document.getElementById('target').innerHTML += '<h1>Target Text: </h1>';
+document.getElementById('target').innerHTML += target;
+document.getElementById('demo').innerHTML += '<h1>Generated Text: </h1>';
+document.getElementById('score').innerHTML += '<h1>Score: </h1>';
 
-typeWriter()
+typeWriter();
