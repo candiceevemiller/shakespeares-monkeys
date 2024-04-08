@@ -1,0 +1,29 @@
+@import "/node_modules/bootstrap/scss/bootstrap";
+@import "/node_modules/bootstrap/scss/variables";
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+
+body {
+    background-color: $dark;
+}
+
+header {
+    width: 100vw;
+}
+
+.comic {
+    width: 500px;
+}
+
+.display-linebreak {
+    white-space: pre-line;
+}
