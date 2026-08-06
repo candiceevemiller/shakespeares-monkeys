@@ -1,4 +1,8 @@
-# shakespeares-monkeys
-A simple webpage that generates random strings of text and compares them to shakespeare quotes. Hosted [here](https://candiceevemiller.github.io/shakespeares-monkeys/).
+# React + Vite
 
-Work in progress. Want to refactor to generate text server-side rather than client-side and keep track of best generation thus far and give it nicer styling.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

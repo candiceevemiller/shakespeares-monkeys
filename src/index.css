@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: theme('colors.paper');
+  color: theme('colors.ink');
+}
+
+::selection {
+  background-color: theme('colors.ink');
+  color: theme('colors.paper');
+}
+
+:focus-visible {
+  outline: 2px solid theme('colors.ink');
+  outline-offset: 2px;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.cursor::after {
+  content: '_';
+  animation: blink 1s step-start infinite;
+}
