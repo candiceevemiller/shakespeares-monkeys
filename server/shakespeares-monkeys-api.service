@@ -1,0 +1,21 @@
+[Unit]
+Description=Shakespeare's Monkeys global best-record API
+After=network.target
+
+[Service]
+Type=simple
+User=candice
+Group=candice
+WorkingDirectory=/opt/shakespeares-monkeys-api
+ExecStart=/usr/bin/python3 /opt/shakespeares-monkeys-api/app.py
+Environment=PORT=8787
+Environment=DATA_FILE=/var/lib/shakespeares-monkeys/best.json
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/shakespeares-monkeys
+
+[Install]
+WantedBy=multi-user.target
